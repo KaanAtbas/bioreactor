@@ -1,53 +1,59 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
+// Pin tanımlamaları
+#define ONE_WIRE_BUS 2 // Dallas sıcaklık sensörünün bağlı olduğu pin
+#define ISITICI_PIN 3 // Isıtıcı pin
 
-
-
-
-// Sensörün bağlı olduğu pin
-#define ONE_WIRE_BUS 2
-
-// Setup a oneWire instance to communicate with any OneWire devices
+// Sıcaklık sensörü nesnesi oluşturuluyor
 OneWire oneWire(ONE_WIRE_BUS);
-
-// Pass our oneWire reference to Dallas Temperature sensor 
 DallasTemperature sensors(&oneWire);
 
-// Isıtıcının kontrol edildiği pin
-int heaterPin = 3; 
+// Sıcaklık limitleri (örnek olarak belirlenmiştir, gerçek değerler projenize göre ayarlanmalıdır)
+float sicaklikLimitAlt = 20; // Isıtıcıyı açmak için alt limit
+float sicaklikLimitUst = 25; // Isıtıcıyı kapatmak için üst limit
 
-void setup(void)
-{
-  // Serial port başlat
-  Serial.begin(9600);
-  // DallasTemperature kütüphanesini başlat
-  sensors.begin();
-  // Isıtıcı pinini çıkış olarak ayarla
-  pinMode(heaterPin, OUTPUT);
+// Zamanlama değişkenleri
+unsigned long previousMillis = 0;
+const long interval = 1000; // 1 saniyelik zaman aralığı
+
+// Sıcaklık kontrol fonksiyonu
+void sicaklikKontrol() {
+  unsigned long currentMillis = millis(); // Geçen süre hesaplanıyor
+
+  // Belirli aralıklarla sıcaklık kontrolü yapılıyor
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis; // Zamanı güncelle
+
+    // Sıcaklık sensöründen veri okunuyor
+    sensors.requestTemperatures();
+    float sicaklik = sensors.getTempCByIndex(0);
+
+    // Sıcaklık kontrolü
+    if (!isnan(sicaklik)) {
+      if (sicaklik < sicaklikLimitAlt) {
+        // Sıcaklık alt limitin altındaysa ısıtıcıyı aç
+        digitalWrite(ISITICI_PIN, HIGH);
+      } else if (sicaklik > sicaklikLimitUst) {
+        // Sıcaklık üst limitin üstündeyse ısıtıcıyı kapat
+        digitalWrite(ISITICI_PIN, LOW);
+      }
+    }
+
+    // Sıcaklık değeri seri porta yazdırılıyor
+    Serial.print("Sicaklik: ");
+    Serial.print(sicaklik);
+    Serial.println(" °C");
+  }
 }
 
-void loop(void)
-{ 
-  // Sensörlerden sıcaklık oku
-  sensors.requestTemperatures(); 
-  float temperatureC = sensors.getTempCByIndex(0);
-  
-  Serial.print("Current temperature is: ");
-  Serial.print(temperatureC);
-  Serial.println(" C");
+void setup() {
+  Serial.begin(9600); // Seri haberleşme başlatılıyor
+  sensors.begin(); // Sıcaklık sensörü başlatılıyor
+  pinMode(ISITICI_PIN, OUTPUT); // Isıtıcı pin çıkış olarak ayarlanıyor
+}
 
-  // Sıcaklık 35°C'nin altındaysa ısıtıcıyı aç
-  if(temperatureC < 35.0){
-    digitalWrite(heaterPin, HIGH);
-    Serial.println("Heater is ON");
-  }
-  // Sıcaklık 35°C'nin üstündeyse ısıtıcıyı kapat
-  else if(temperatureC > 35.0){
-    digitalWrite(heaterPin, LOW);
-    Serial.println("Heater is OFF");
-  }
-  
-  // 1 saniye bekle
-  delay(1000);
+void loop() {
+  sicaklikKontrol();
+  // Diğer işlemler buraya yazılabilir
 }
