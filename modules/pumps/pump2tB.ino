@@ -5,7 +5,7 @@
 #define POMPA_PIN 2 // Pompanın bağlı olduğu pin
 #define INTERVAL 21600000 // 6 saat = 6 * 60 dakika * 60 saniye * 1000 milisaniye = 21,600,000 milisaniye
 
-unsigned long previousMillis = 0; // Önceki milisaniye değeri saklanacak değişken
+unsigned long previousMillis0 = 0; // Önceki milisaniye değeri saklanacak değişken
 
 bool pompaDurumu = false; // Pompanın açık veya kapalı olduğunu belirten değişken
 
@@ -14,10 +14,10 @@ void setup() {
 }
 
 void pompaKontrol() {
-  unsigned long currentMillis = millis(); // Geçerli milisaniye değeri alınır
+  unsigned long currentMillis0 = millis(); // Geçerli milisaniye değeri alınır
 
-  if (currentMillis - previousMillis >= INTERVAL) { // Belirli aralıklarda kontrol edilir
-    previousMillis = currentMillis; // Önceki milisaniye değeri güncellenir
+  if (currentMillis0 - previousMillis0 >= INTERVAL) { // Belirli aralıklarda kontrol edilir
+    previousMillis0 = currentMillis0; // Önceki milisaniye değeri güncellenir
 
     // Pompa durumuna göre işlem yapılır
     if (pompaDurumu) {
@@ -29,11 +29,4 @@ void pompaKontrol() {
     // Pompa durumu tersine çevrilir
     pompaDurumu = !pompaDurumu;
   }
-}
-
-void loop() {
-  // Pompa kontrol fonksiyonu çağrılır
-  pompaKontrol();
-
-  // Diğer işlemler için kodlar buraya eklenebilir, delay() kullanımından kaçınılmalıdır
 }
