@@ -1,4 +1,6 @@
 //genel tahliye
+
+
 // Pin tanımlamaları
 #define POMPA_PIN 2 // Pompanın bağlı olduğu pin
 #define INTERVAL 21600000 // 6 saat = 6 * 60 dakika * 60 saniye * 1000 milisaniye = 21,600,000 milisaniye
