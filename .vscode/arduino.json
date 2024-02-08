@@ -1,6 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "programmer": "avrisp",
-    "output": ".arduino/output",
-    "sketch": "modules/pumps/pump3.ino"
-}
