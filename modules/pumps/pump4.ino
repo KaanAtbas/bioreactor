@@ -1,8 +1,8 @@
 //filtresiz tahliye
 
 // Pin tanımlamaları
-const int pompaPin = 2; // Pompanın kontrol pin numarası
-const int butonPin = 3; // Butonun bağlı olduğu pin numarası
+#define pompaPin = 2; // Pompanın kontrol pin numarası
+#define butonPin = 3; // Butonun bağlı olduğu pin numarası
 
 void setup() {
   pinMode(pompaPin, OUTPUT); // Pompa pinini çıkış olarak ayarla
@@ -20,3 +20,4 @@ void loop() {
     digitalWrite(pompaPin, LOW); // Pompayı kapat
   }
 }
+
