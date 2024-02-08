@@ -8,11 +8,6 @@ void setup() {
   pinMode(POMPA_PIN, OUTPUT); // Pompa pinini çıkış olarak ayarla
 }
 
-void loop() {
-  pompayiKontrolEt();
-  // Diğer işlemler buraya yazılabilir
-}
-
 void pompa1Calis() {
   unsigned long currentMillis = millis(); // Geçen zamanı al
 
