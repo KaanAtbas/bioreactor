@@ -1,4 +1,5 @@
 //besiyeri giriş
+
 #define POMPA_PIN 7 // Peristaltik pompa için kullanılan pin
 #define SIVI_SEVIYE_SENSORU_PIN 2 // Dijital sıvı seviye sensörü için kullanılan pin
 

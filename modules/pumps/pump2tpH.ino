@@ -1,4 +1,5 @@
 //pompa baz sonrası tahliye
+
 // Pin tanımlamaları
 #define POMPA_PIN 9  // Peristaltik pompa için kullanılan pin
 #define SEVIYE_SENSORU_PIN 7  // Dijital sıvı seviye sensörü için kullanılan pin
