@@ -30,7 +30,7 @@ void sicaklikKontrol() {
     float sicaklik = sensors.getTempCByIndex(0);
 
     // Sıcaklık kontrolü
-    if (!isnan(sicaklik)) {
+    if (sicaklik) {
       if (sicaklik < sicaklikLimitAlt) {
         // Sıcaklık alt limitin altındaysa ısıtıcıyı aç
         digitalWrite(ISITICI_PIN, HIGH);
