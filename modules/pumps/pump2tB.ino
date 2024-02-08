@@ -1,4 +1,4 @@
-//genel tahliye
+//besiyeri sonrası tahliye
 
 
 // Pin tanımlamaları
