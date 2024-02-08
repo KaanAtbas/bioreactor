@@ -1,1 +1,0 @@
-değişikliks2
