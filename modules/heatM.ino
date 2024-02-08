@@ -10,8 +10,8 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
 // Sıcaklık limitleri (örnek olarak belirlenmiştir, gerçek değerler projenize göre ayarlanmalıdır)
-float sicaklikLimitAlt = 20; // Isıtıcıyı açmak için alt limit
-float sicaklikLimitUst = 25; // Isıtıcıyı kapatmak için üst limit
+float sicaklikLimitAlt = 35; // Isıtıcıyı açmak için alt limit
+float sicaklikLimitUst = 36; // Isıtıcıyı kapatmak için üst limit
 
 // Zamanlama değişkenleri
 unsigned long previousMillis = 0;
@@ -53,7 +53,3 @@ void setup() {
   pinMode(ISITICI_PIN, OUTPUT); // Isıtıcı pin çıkış olarak ayarlanıyor
 }
 
-void loop() {
-  sicaklikKontrol();
-  // Diğer işlemler buraya yazılabilir
-}
