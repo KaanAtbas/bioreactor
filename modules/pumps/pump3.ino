@@ -14,8 +14,7 @@ void setup() {
 }
 
 void loop() {
-  int pH_degeri_raw = analogRead(pH_PIN); // pH sensöründen ham değer okunur
-  float pH_degeri = map(pH_degeri_raw, 0, 1023, 0, 14); // Ham değer 0-14 aralığında pH değerine dönüştürülür
+  float pH_degeri = digitalRead(pH_PIN); // pH sensöründen ham değer okunur
 
   Serial.print("pH Degeri: ");
   Serial.println(pH_degeri);
