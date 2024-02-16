@@ -3,7 +3,7 @@
 
 // Pin tanımlamaları
 #define pH_PIN A0 // pH sensörünün bağlı olduğu analog pin
-#define POMPA_PIN 2 // Pompanın bağlı olduğu pin
+#define POMPA_BAZ 2 // Pompanın bağlı olduğu pin
 
 // pH değeri için eşik değeri
 const float pH_EsikDegeri = 7.0;
