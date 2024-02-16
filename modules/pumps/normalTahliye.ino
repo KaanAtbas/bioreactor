@@ -5,6 +5,6 @@ void setup() {
 }
 
 void pompaTahliyeCalistir(){
-    digitalWrite(POMPA_TAHLIYE, HIGH);
-    
+    digitalWrite(POMPA_TAHLIYE, HIGH); //Pompayı çalıştır
+
 }
