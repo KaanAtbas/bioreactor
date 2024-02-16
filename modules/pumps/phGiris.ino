@@ -10,7 +10,7 @@ const float pH_EsikDegeri = 7.0;
 
 void setup() {
   Serial.begin(9600); // Seri haberleşmeyi başlat
-  pinMode(POMPA_PIN, OUTPUT); // Pompa pini çıkış olarak ayarlanır
+  pinMode(POMPA_BAZ, OUTPUT); // Pompa pini çıkış olarak ayarlanır
 }
 
 void loop() {
@@ -21,9 +21,9 @@ void loop() {
 
   // Ortam asidikleştiğinde (pH 7'nin altında) pompayı çalıştır
   if (pH_degeri < pH_EsikDegeri) {
-    digitalWrite(POMPA_PIN, HIGH); // Pompayı çalıştır
+    digitalWrite(POMPA_BAZ, HIGH); // Pompayı çalıştır
     delay(1000); // Pompayı 1 saniye çalıştır
-    digitalWrite(POMPA_PIN, LOW); // Pompayı durdur
+    digitalWrite(POMPA_BAZ, LOW); // Pompayı durdur
   }
 
   delay(1000); // Her ölçüm arasında kısa bir gecikme

@@ -8,7 +8,7 @@ void setup() {
   pinMode(SIVI_SEVIYE_SENSORU_PIN, INPUT);
 }
 
-void pompa1Calistir() {
+void pompaBesiyeriCalistir() {
   // Sıvı seviye sensöründen değeri oku
   int siviSeviyesi = digitalRead(SIVI_SEVIYE_SENSORU_PIN);
 
