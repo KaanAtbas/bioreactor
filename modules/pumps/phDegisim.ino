@@ -1,4 +1,5 @@
-//ph giriş
+//ph değişim
+#include <normalTahliye.ino>
 
 
 // Pin tanımlamaları
@@ -21,9 +22,11 @@ void loop() {
 
   // Ortam asidikleştiğinde (pH 7'nin altında) pompayı çalıştır
   if (pH_degeri < pH_EsikDegeri) {
-    digitalWrite(POMPA_BAZ, HIGH); // Pompayı çalıştır
+    digitalWrite(POMPA_BAZ, HIGH); // Baz Pompayı çalıştır
+    digitalWrite(POMPA_TAHLIYE, HIGH); // Tahliye Pompayı çalıştır
     delay(1000); // Pompayı 1 saniye çalıştır
     digitalWrite(POMPA_BAZ, LOW); // Pompayı durdur
+    digitalWrite(POMPA_TAHLIYE,LOW); //Tahliye pompası dur
   }
 
   delay(1000); // Her ölçüm arasında kısa bir gecikme
