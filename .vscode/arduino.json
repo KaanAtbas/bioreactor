@@ -2,5 +2,5 @@
     "board": "arduino:avr:uno",
     "programmer": "avrisp",
     "output": ".arduino/output",
-    "sketch": "modules/pumps/pump4.ino"
+    "sketch": "bioreactor/modules/pumps/pump2tB.ino"
 }

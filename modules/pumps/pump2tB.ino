@@ -25,8 +25,6 @@ void pompaKontrol() {
       digitalWrite(POMPA_PIN, HIGH); // Pompa açılır
     }
 
-    if
-    // Pompa durumu tersine çevrilir
-    pompaDurumu = !pompaDurumu;
+    
   }
 }
