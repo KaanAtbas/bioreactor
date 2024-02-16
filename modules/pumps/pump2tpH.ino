@@ -1,3 +1,5 @@
+#include <pump3.ino>
+
 //pompa baz sonrası tahliye
 
 // Pin tanımlamaları
@@ -17,6 +19,8 @@ void loop() {
   if (seviye == 0) {
     digitalWrite(POMPA_PIN, HIGH);  // Pompa çalıştır
   } else {
+  
     digitalWrite(POMPA_PIN, LOW);  // Pompa durdur
   }
 }
+
