@@ -13,12 +13,10 @@ void pompa1Calistir() {
   int siviSeviyesi = digitalRead(SIVI_SEVIYE_SENSORU_PIN);
 
   // Eğer sıvı seviyesi 0'a eşitse, pompayı çalıştır
-  while (siviSeviyesi != 1) {
+  while (siviSeviyesi = 0) {
     digitalWrite(POMPA_PIN, HIGH); // Pompa çalıştır
     siviSeviyesi = digitalRead(SIVI_SEVIYE_SENSORU_PIN); // Sıvı seviyesini tekrar oku
   }
 
   digitalWrite(POMPA_PIN, LOW); // Pompa durdur
 }
-
-
