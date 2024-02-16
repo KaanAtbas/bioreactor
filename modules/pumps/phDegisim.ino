@@ -14,7 +14,7 @@ void setup() {
   pinMode(POMPA_BAZ, OUTPUT); // Pompa pini çıkış olarak ayarlanır
 }
 
-void loop() {
+void phDegisim() {
   float pH_degeri = digitalRead(pH_PIN); // pH sensöründen ham değer okunur
 
   Serial.print("pH Degeri: ");
