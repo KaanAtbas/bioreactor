@@ -21,13 +21,11 @@ void phDegisim() {
   Serial.println(pH_degeri);
 
   // Ortam asidikleştiğinde (pH 7'nin altında) pompayı çalıştır
-  if (pH_degeri < pH_EsikDegeri) {
+  while (pH_degeri < pH_EsikDegeri) {
     digitalWrite(POMPA_BAZ, HIGH); // Baz Pompayı çalıştır
     digitalWrite(POMPA_TAHLIYE, HIGH); // Tahliye Pompayı çalıştır
-    delay(1000); // Pompayı 1 saniye çalıştır
-    digitalWrite(POMPA_BAZ, LOW); // Pompayı durdur
-    digitalWrite(POMPA_TAHLIYE,LOW); //Tahliye pompası dur
+    pH_degeri = digitalRead(pH_PIN); // pH sensöründen ham değer okunur
   }
-
-  delay(1000); // Her ölçüm arasında kısa bir gecikme
+  digitalWrite(POMPA_BAZ, LOW); // Pompayı durdur
+  digitalWrite(POMPA_TAHLIYE,LOW); //Tahliye pompası dur
 }
