@@ -2,18 +2,35 @@
 #include "pumps.ino"
 #include "heat.ino"
 
-void setup() {
+float heatThreshold = 35;
+float pHThreshold = 7;
+
+void setup()
+{
     initializeSensors();
     initializePumps();
     initializeHeat();
 }
 
-void loop() {
-    while (heatData<)
+void loop()
+{
+    if (heatData < heatThreshold)
     {
-        /* code */
+        heatOn();
     }
-    
+    else
+    {
+        heatOff();
+    }
 
-    
+    if (pHThreshold < phData)
+    {
+        pump2On();
+        pump3On();
+    }
+    else
+    {
+        pump2Off();
+        pump3Off();
+    }
 }
