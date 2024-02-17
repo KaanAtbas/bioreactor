@@ -4,6 +4,8 @@
 
 float heatThreshold = 35;
 float pHThreshold = 7;
+bool stateHeat = false;
+bool statePh = false;
 
 void setup()
 {
@@ -14,23 +16,27 @@ void setup()
 
 void loop()
 {
-    if (heatData < heatThreshold)
+    if (heatData < heatThreshold && !stateHeat)
     {
         heatOn();
+        stateHeat = true;
     }
-    else
+    else if (heatData >= heatThreshold && stateHeat)
     {
         heatOff();
+        stateHeat = false;
     }
 
-    if (pHThreshold < phData)
+    if (pHThreshold < phData && !statePh)
     {
         pump2On();
         pump3On();
+        statePh = true;
     }
-    else
+    else if (phData >= pHThreshold && statePh)
     {
         pump2Off();
         pump3Off();
+        statePh = false;
     }
 }
