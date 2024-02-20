@@ -1,12 +1,12 @@
-#include "sensorRead.ino"
-#include "pumps.ino"
-#include "heat.ino"
+#include <functions.h>
 
 float heatThreshold = 35;
 float pHThreshold = 7;
 bool stateHeat = false;
 bool statePh = false;
-
+const unsigned long interval = 21600000;
+unsigned long previousMillis = 0;
+bool stateTime = false;
 void setup()
 {
     initializeSensors();
@@ -16,6 +16,8 @@ void setup()
 
 void loop()
 {
+    unsigned long currentMillis = millis();
+
     if (heatData < heatThreshold && !stateHeat)
     {
         heatOn();
@@ -39,4 +41,14 @@ void loop()
         pump3Off();
         statePh = false;
     }
+    if (currentMillis - previousMillis >= interval)
+    {
+        previousMillis = currentMillis;
+        pump1On();
+        pump3On();
+        //ne kadar süre çalışması gerektiği hesaplanıp ona göre tekrar kodlanacak
+    
+    }
+    
+
 }
