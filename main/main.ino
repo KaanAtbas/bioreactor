@@ -8,7 +8,6 @@ const unsigned long interval = 21600000;
 unsigned long previousMillis = 0;
 bool statePump = false;
 const unsigned long intervalPump = 600000;
-unsigned long previousPump = 0;
 void setup()
 {
     initializeSensors();
