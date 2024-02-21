@@ -3,6 +3,7 @@
 #define pH_PIN 2
 #define heat_PIN 3
 #define liq_PIN 4
+#define but_PIN 5
 OneWire oneWire(heat_PIN);
 DallasTemperature sensors(&oneWire);
 
@@ -32,6 +33,8 @@ int readSensorLiq()
     int sensorValue = digitalRead(liq_PIN);
     return sensorValue;
 }
+
+
 float phData = readSensorPh();
 float heatData = readSensorHeat();
 int liqData = readSensorLiq();
