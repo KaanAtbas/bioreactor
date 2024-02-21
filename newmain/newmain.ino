@@ -31,10 +31,10 @@ void initializeHeat() {
 }
 
 void heatOn() {
-    digitalWrite(HEAT_PIN, HIGH)
+    digitalWrite(HEAT_PIN, HIGH);
 }
 void heatOff() {
-    digitalWrite(HEAT_PIN, LOW)
+    digitalWrite(HEAT_PIN, LOW);
 }
 void initializePumps()
 {
@@ -85,9 +85,9 @@ void initializeSensors()
 {
     Serial.begin(9600);
     sensors.begin();
-    pinMode(pH_PIN, INPUT)
-    pinMode(liq_PIN, INPUT)
-    pinMode(but_PIN, INPUT)
+    pinMode(pH_PIN, INPUT);
+    pinMode(liq_PIN, INPUT);
+    pinMode(but_PIN, INPUT);
 }
 
 int readSensorBut() {
