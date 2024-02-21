@@ -42,7 +42,7 @@ void loop()
         pump3Off();
         statePh = false;
     }
-    if ((currentMillis - previousMillis >= interval) && statePump = false)
+    if ((currentMillis - previousMillis >= interval) && statePump = false) // önceden tanımlanmış zaman aralığında otomatik pompa aç
     {
         previousMillis = currentMillis;
         pump1On();
@@ -50,7 +50,7 @@ void loop()
         statePump = true;
     
     }
-    if ((currentMillis >= (previousMillis + intervalPump)) && statePump= true)
+    if ((currentMillis >= (previousMillis + intervalPump)) && statePump= true) //// önceden tanımlanmış zaman aralığında otomatik pompa kapat
     {
         pump1Off();
         pump3Off();
