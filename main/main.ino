@@ -48,7 +48,6 @@ void loop()
         pump1On();
         pump3On();
         statePump = true;
-        //ne kadar süre çalışması gerektiği hesaplanıp ona göre tekrar kodlanacak
     
     }
     if ((currentMillis >= (previousMillis + intervalPump)) && statePump= true)
