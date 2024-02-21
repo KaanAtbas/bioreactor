@@ -6,7 +6,9 @@ bool stateHeat = false;
 bool statePh = false;
 const unsigned long interval = 21600000;
 unsigned long previousMillis = 0;
-bool stateTime = false;
+bool statePump = false;
+const unsigned long intervalPump = 600000;
+unsigned long previousPump = 0;
 void setup()
 {
     initializeSensors();
@@ -46,9 +48,15 @@ void loop()
         previousMillis = currentMillis;
         pump1On();
         pump3On();
+        statePump = true;
         //ne kadar süre çalışması gerektiği hesaplanıp ona göre tekrar kodlanacak
     
     }
-    
+    if ((currentMillis >= (previousMillis + intervalPump)) && statePump= true)
+    {
+        pump1Off();
+        pump3Off();
+        statePump = false;
+    }
 
 }
