@@ -42,7 +42,7 @@ void loop()
         pump3Off();
         statePh = false;
     }
-    if (currentMillis - previousMillis >= interval)
+    if ((currentMillis - previousMillis >= interval) && statePump = false)
     {
         previousMillis = currentMillis;
         pump1On();
