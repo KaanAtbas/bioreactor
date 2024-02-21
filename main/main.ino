@@ -8,6 +8,9 @@ const unsigned long interval = 21600000;
 unsigned long previousMillis = 0;
 bool statePump = false;
 const unsigned long intervalPump = 600000;
+bool stateOverflow = true;
+bool stateBut = true;
+bool stateStabilizer = false;
 void setup()
 {
     initializeSensors();
@@ -57,5 +60,45 @@ void loop()
         statePump = false;
     }
 
+    int liqData = readSensorLiq(); //taşma durumu önleyici
+    if (liqData == 1 && stateOverflow == true)
+    {
+        pump3On();
+        stateOverflow = false;
+    }
+
+    int liqData = readSensorLiq(); //taşma durumu önleyici
+    if (liqData == 0 && stateOverflow == false)
+    {
+        pump3Off();
+        stateOverflow = true;
+    }
+
+    int butData = readSensorBut(); //filtresiz tahliye için manuel komut
+    if (butData == HIGH && stateBut == true)
+    {
+        pump4On();
+        stateBut = false;
+    }
+
+    int butData = readSensorBut(); //filtresiz tahliye için manuel komut
+    if (butData == LOW && stateBut == false)
+    {
+        pump4Off();
+        stateBut = true;
+    }
+    
+    int liqData = readSensorLiq();//sıvı dengeleyici.
+    if (liqData == 0 && stateStabilizer == false)
+    {
+        pump1On();
+        stateStabilizer = true;
+    }
+    int liqData = readSensorLiq();
+    if (liqData == 1 && stateStabilizer == true)
+    {
+        pump1Off();
+        stateStabilizer = false;
+    }
 
 }

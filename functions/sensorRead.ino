@@ -4,6 +4,7 @@
 #define heat_PIN 3
 #define liq_PIN 4
 #define but_PIN 5
+
 OneWire oneWire(heat_PIN);
 DallasTemperature sensors(&oneWire);
 
@@ -13,6 +14,12 @@ void initializeSensors()
     sensors.begin();
     pinMode(pH_PIN, INPUT)
     pinMode(liq_PIN, INPUT)
+    pinMode(but_PIN, INPUT)
+}
+
+int readSensorBut() {
+    int sensorValue = digitalRead(but_PIN);
+    return sensorValue;
 }
 
 float readSensorPh()
@@ -34,7 +41,7 @@ int readSensorLiq()
     return sensorValue;
 }
 
-
+int butData = readSensorBut();
 float phData = readSensorPh();
 float heatData = readSensorHeat();
 int liqData = readSensorLiq();
