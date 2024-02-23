@@ -4,6 +4,8 @@
 #define heat_PIN 3
 #define liq_PIN 4
 #define but_PIN 5
+#define butOnOff_PIN 6
+
 
 OneWire oneWire(heat_PIN);
 DallasTemperature sensors(&oneWire);
@@ -15,10 +17,15 @@ void initializeSensors()
     pinMode(pH_PIN, INPUT)
     pinMode(liq_PIN, INPUT)
     pinMode(but_PIN, INPUT)
+    pindMode(butOnOff_PIN, INPUT)
 }
 
 int readSensorBut() {
     int sensorValue = digitalRead(but_PIN);
+    return sensorValue;
+}
+int readSensorButOnOff() {
+    int sensorValue = digitalRead(butOnOff_PIN);
     return sensorValue;
 }
 

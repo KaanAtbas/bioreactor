@@ -10,6 +10,8 @@
 #define heat_PIN 3
 #define liq_PIN 4
 #define but_PIN 5
+#define butOnOff_PIN 6
+
 
 float heatThreshold = 35;
 float pHThreshold = 7;
@@ -22,6 +24,7 @@ const unsigned long intervalPump = 600000;
 bool stateOverflow = true;
 bool stateBut = true;
 bool stateStabilizer = false;
+bool statePower
 
 OneWire oneWire(heat_PIN);
 DallasTemperature sensors(&oneWire);
